@@ -1,0 +1,25 @@
+{
+  "name": "palabra_2",
+  "version": "1.0.0",
+  "description": "word of the day app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmareimer/palabra_2.git"
+  },
+  "keywords": [
+    "word",
+    "of",
+    "the",
+    "day"
+  ],
+  "author": "Emma, Dylan, Jacob",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmareimer/palabra_2/issues"
+  },
+  "homepage": "https://github.com/emmareimer/palabra_2#readme"
+}
