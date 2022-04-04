@@ -37,4 +37,5 @@ Emma - Front end, GH, Heroku, DB
 - Word of the day model
 
 ## Extras
+- Game - test your knowledge
 - 

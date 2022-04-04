@@ -1,14 +1,30 @@
 // import models
-const Words = require('./Word_Of_Day');
+const WordOfDay = require('./WordOfDay');
 const Users = require('./Users');
+const Notes = require('./Notes');
 
 // Words -> belongsTo -> user. User -> hasMany -> Words
-Words.belongsTo(Users);
+WordOfDay.belongsTo(Users);
 
-// Categories have many Products
-Users.hasMany(Words);
+Users.hasMany(WordOfDay);
 
-// Notes -> belongsTo -> User. User -> hasMany -> notes. Notes -> belongsTo -> Word
+// // Notes -> belongsTo -> Users, 
+Notes.belongsToMany(Users, {
+  through: 'WordOfDay',
+  foreignKey: 'day',
+});
+
+Users.hasMany(Notes);
+
+
+// User -> hasMany -> notes. 
+// Users.hasMany(Notes);
+
+// Notes -> belongsTo -> Word
+// Notes.belongsToMany(WordOfDay, {
+//   through: 'Notes',
+//   foreignKey: 'day',
+// });
 
 
 // Words.belongsToMany(Users, {
@@ -31,5 +47,6 @@ Users.hasMany(Words);
 
 module.exports = {
   Users,
-  Words,
+  WordOfDay,
+  Notes,
 };
