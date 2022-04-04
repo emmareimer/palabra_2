@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/emmareimer/palabra_2#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.3",
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
