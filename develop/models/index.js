@@ -6,17 +6,25 @@ const Notes = require('./Notes');
 // Words -> belongsTo -> user. User -> hasMany -> Words
 WordOfDay.belongsTo(Users);
 
-// Categories have many Products
 Users.hasMany(WordOfDay);
 
-// Notes -> belongsTo -> User. 
-Notes.belongsTo(Users);
+// // Notes -> belongsTo -> Users, 
+Notes.belongsToMany(Users, {
+  through: 'WordOfDay',
+  foreignKey: 'day',
+});
 
-// User -> hasMany -> notes. 
 Users.hasMany(Notes);
 
+
+// User -> hasMany -> notes. 
+// Users.hasMany(Notes);
+
 // Notes -> belongsTo -> Word
-Notes.belongsTo(WordOfDay)
+// Notes.belongsToMany(WordOfDay, {
+//   through: 'Notes',
+//   foreignKey: 'day',
+// });
 
 
 // Words.belongsToMany(Users, {
@@ -40,4 +48,5 @@ Notes.belongsTo(WordOfDay)
 module.exports = {
   Users,
   WordOfDay,
+  Notes,
 };
