@@ -43,7 +43,7 @@ router.put('/', async (req, res) => {
   }
 });
 
-// DELETE a Word - for ttesting onl- to be removed for prod (change to remove notes?)
+// DELETE a Word - for ttesting only- to be removed for prod (change to remove notes?)
 router.delete('/:id', async (req, res) => {
   try {
     const wordData = await Word.destroy({
