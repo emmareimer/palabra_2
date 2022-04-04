@@ -1,14 +1,17 @@
 // import models
-const words = require('./words');
-const users = require('./users');
+const Words = require('./Words');
+const Users = require('./Users');
 
- 
-words.belongsTo(users);
+// Words -> belongsTo -> user. User -> hasMany -> Words
+Words.belongsTo(Users);
 
 // Categories have many Products
-users.hasMany(words);
+Users.hasMany(Words);
 
-// words.belongsToMany(users, {
+// Notes -> belongsTo -> User. User -> hasMany -> notes. Notes -> belongsTo -> Word
+
+
+// Words.belongsToMany(Users, {
 //     through: '',
 //     foreignKey: '',
 // });
@@ -27,6 +30,6 @@ users.hasMany(words);
 // });
 
 module.exports = {
-  users,
-  words,
+  Users,
+  Words,
 };
