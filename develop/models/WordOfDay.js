@@ -6,10 +6,10 @@ const Users = require('./Users');
 const Notes = require('./Notes')
 
 // Initialize Product model (table) by extending off Sequelize's Model class
-class Word_Of_Day extends Model {}
+class WordOfDay extends Model {}
 
 // set up fields and rules for Product model
-Word_Of_Day.init(
+WordOfDay.init(
   {
       day: {
         type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ Word_Of_Day.init(
         type: DataTypes.STRING,
         allowNull: false,
       },
-      userId: {
+      user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ Word_Of_Day.init(
           key: 'id'
         }
       },
-      noteId: {
+      note_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {
@@ -42,8 +42,8 @@ Word_Of_Day.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Word_Of_Day',
+    modelName: 'WordOfDay',
   }
   );
 
-module.exports = Word_Of_Day;
+module.exports = WordOfDay;

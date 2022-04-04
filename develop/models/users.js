@@ -2,7 +2,7 @@
 const { Model, DataTypes} = require('sequelize');
 // import our database connection from config.js
 const sequelize = require('../config/connection');
-const Word_Of_Day = require('./Word_Of_day');
+const Word_Of_Day = require('./WordOfDay');
 const Notes = require('./Notes')
 
 // Initialize Product model (table) by extending off Sequelize's Model class
