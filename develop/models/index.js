@@ -1,5 +1,5 @@
 // import models
-const Words = require('./Words');
+const Words = require('./Word_Of_Day');
 const Users = require('./Users');
 
 // Words -> belongsTo -> user. User -> hasMany -> Words
