@@ -12,16 +12,16 @@ word of the day app
 
 ## Roles
 Jacob - Backend - routes
-Dylan - Presentation, Research on new tech, Login
+Dylan - Presentation, Research on new tech
 Emma - Front end, GH, Heroku, DB
+D & E - authentication
 
 ## Roadmap - day 1* - done by Monday 
-1. Emma - create database, seeds
+1. Emma - seed data
 2. Jacob - routes
     - Get word of day and post notes
-3. Word model - ID = date??, note
-    - Use API to fetch definition, synonyms, article of speech
-4. User model - id, email, password
+3. Word model - 
+    - FRONT END: Use API to fetch definition, synonyms, article of speech
 
 
 ## Installation
