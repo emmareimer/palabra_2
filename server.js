@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const routes = require('./controllers/index');
 const sequelize = require('./config/connection');
+const { engine } = require('express-handlebars');
 // import sequelize connection
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -18,6 +19,10 @@ const sess = {
     db: sequelize
   })
 };
+
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 app.use(session(sess));
 

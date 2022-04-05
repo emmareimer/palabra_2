@@ -1,0 +1,25 @@
+<nav>
+    
+      <span>
+        <a href="/" class="text-4xl text-left" id="palabra">Palabra</a>
+      </span>
+
+      <span>
+        <h2 class="text-2xl text-right"><a href="/">Testimonials</a></h2>
+      </span>
+
+       {{#if isLoggedIn}}
+
+      <span>
+        <h2 class="text-2xl text-right"><a href="/profile">Profile</a></h2>
+      </span>
+      <span>
+        <h2 class="text-2xl text-right"><a href="/">Logout</a></h2>
+      </span>
+      {{else}}
+
+      <span>
+        <h2 class="text-2xl text-right"><a href="/login">Login</a></h2>
+      </span>
+  {{/if}}
+</nav>
