@@ -7,5 +7,4 @@ router.use('/notes', noteRoutes)
 router.use('/users', userRoutes);
 router.use('/word', wordRoutes);
 
-
 module.exports = router;

@@ -13,12 +13,35 @@ router.get('/', async (req, res) => {
     }
   });
 
+ 
+router.get('/:id', async (req, res) => {
+  // const curDay = somehow we get the julian day
+  try {
+    const curDay = req.params.id;
+    const noteData = await Note.findByPk(curDay, {
+  });
+  if (!noteData) {
+    res.status(404).json({ message: 'No notes for this word!' });
+    return;
+  }
+  res.status(200).json(noteData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 
 // CREATE a note
 router.post('/', async (req, res) => {
-    const userInput = 'abc Note';
+  const userInput = 'abc Note';
+  const curDay = 1;
+  const userID = 1;
+  const noteTemplate = `{"note_of_day": "${userInput}",
+  "user_id": "${userID}",
+"day": "${curDay}"
+}`
     try {
-      const noteData = await Note.create(userInput);
+      const noteData = await Note.create(noteTemplate);
       res.status(200).json(noteData);
     } catch (err) {
       res.status(400).json(err);
