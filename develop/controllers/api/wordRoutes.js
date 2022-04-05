@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Word} = require('../../models'); // update
 
+
+// current route:   http://localhost:3001/api/word
+
 // GET all Words - for testing only - to be removed for prod
 router.get('/', async (req, res) => {
   try {
@@ -30,16 +33,6 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(wordData);
   } catch (err) {
     res.status(500).json(err);
-  }
-});
-
-// CREATE a Note (adding column to table with value passed in from user)
-router.put('/', async (req, res) => {
-  try {
-    const noteData = await Word.create(req.body);
-    res.status(200).json(wordData);
-  } catch (err) {
-    res.status(400).json(err);
   }
 });
 
