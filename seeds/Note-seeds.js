@@ -12,3 +12,5 @@ const NoteData = [
 const seedNote = () => Note.bulkCreate(NoteData);
 
 module.exports = seedNote;
+
+// checking something
