@@ -10,6 +10,7 @@ word of the day app
 - Establish connections for notes - J (similar to e commerce backend)
 - Word of day that displays word, def, article of speech, and synonyms - Jacob (next class)
 - Display template with past WOD and notes - FRONT END - D, last 5 days
+- Emailer - D & E
 
 FRONT END JS - DYLAN AND EMMA
 BACK END JS - JACOB
