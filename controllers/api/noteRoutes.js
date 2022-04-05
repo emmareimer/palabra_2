@@ -33,15 +33,8 @@ router.get('/:id', async (req, res) => {
 
 // CREATE a note
 router.post('/', async (req, res) => {
-  const userInput = 'abc Note';
-  const curDay = 1;
-  const userID = 1;
-  const noteTemplate = `{"note_of_day": "${userInput}",
-  "user_id": "${userID}",
-"day": "${curDay}"
-}`
     try {
-      const noteData = await Note.create(noteTemplate);
+      const noteData = await Note.create(req.body);
       res.status(200).json(noteData);
     } catch (err) {
       res.status(400).json(err);
