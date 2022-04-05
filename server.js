@@ -1,9 +1,9 @@
+const path = require('path'); 
 const express = require('express');
 const session = require('express-session');
 const routes = require('./controllers/index');
 const sequelize = require('./config/connection');
 const { engine } = require('express-handlebars');
-const path = require('path'); 
 
 // import sequelize connection
 
@@ -30,6 +30,8 @@ app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// ----------------- path to connect css, client side js to handlebars --------------------
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(routes);
