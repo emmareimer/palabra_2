@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-const seedNotes = require('./Note-seeds');
-const seedUsers = require('./User-seeds');
-=======
 const seedNote = require('./Note-seeds');
 const seedUser = require('./User-seeds');
->>>>>>> a4b6db2ac97e0b446177893c4c61dd4ceef8c6b6
+const seedNote = require('./Note-seeds');
+const seedUser = require('./User-seeds');
 const seedWordOfDay = require('./WordOfDay-seeds');
 
 const sequelize = require('../config/connection');
