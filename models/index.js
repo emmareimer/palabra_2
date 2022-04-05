@@ -24,8 +24,6 @@ Note.belongsTo(User, {
 });
 
 
-
-
 // User -> hasMany -> notes. 
 // User.hasMany(Notes);
 
@@ -55,7 +53,7 @@ Note.belongsTo(User, {
 // });
 
 module.exports = {
-  Users,
+  User,
   WordOfDay,
-  Notes,
+  Note,
 };
