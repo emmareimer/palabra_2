@@ -24,7 +24,13 @@ Note.belongsTo(User, {
 });
 
 
+<<<<<<< HEAD
 // User -> hasMany -> notes. 
+=======
+
+
+// User -> hasMany -> Note. 
+>>>>>>> a4b6db2ac97e0b446177893c4c61dd4ceef8c6b6
 // User.hasMany(Notes);
 
 // Notes -> belongsTo -> Word
