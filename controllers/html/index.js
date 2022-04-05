@@ -1,6 +1,7 @@
 const withAuth = require('../../utils/auth')
 const router = require('express').Router();
 const User = require('../../models/User')
+
 router.get('/login', (req, res) => {
     res.render('login');
 });
