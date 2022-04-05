@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User, Note, WordOfDay } = require('../../models'); // need to update to our models *************
 
+//current route /api/users
+
 // GET all users - for testing only, to be deleted before prod
 router.get('/', async (req, res) => {
   try {

@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Word} = require('../../models'); // update
+const { WordOfDay } = require('../../models'); // update
 
-// GET all Words - for testing only - to be removed for prod
+//current route api/word/
+
+// GET all Words (and data) - for testing only - to be removed for prod
 router.get('/', async (req, res) => {
   try {
-    const wordData = await Word.findAll();
+    const wordData = await WordOfDay.findAll();
     res.status(200).json(wordData);
   } catch (err) {
     res.status(500).json(err);
