@@ -2,8 +2,8 @@
 const { Model, DataTypes} = require('sequelize');
 // import our database connection from config.js
 const sequelize = require('../config/connection');
-const Users = require('./Users');
-const Notes = require('./Notes')
+const User = require('./User');
+const Note = require('./Note')
 
 // Initialize Product model (table) by extending off Sequelize's Model class
 class WordOfDay extends Model {}
@@ -24,7 +24,7 @@ WordOfDay.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'User',
           key: 'id'
         }
       },
