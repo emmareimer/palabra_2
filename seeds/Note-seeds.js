@@ -1,6 +1,6 @@
-const { Notes } = require('../models');
+const { Note } = require('../models');
 
-const NotesData = [
+const NoteData = [
   {
     id: 1,
     note_of_day: "This word is really cool.",
@@ -9,6 +9,6 @@ const NotesData = [
   },
 ];
 
-const seedNotes = () => Notes.bulkCreate(NotesData);
+const seedNote = () => Note.bulkCreate(NoteData);
 
-module.exports = seedNotes;
+module.exports = seedNote;
