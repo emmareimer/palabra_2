@@ -8,13 +8,22 @@ WordOfDay.belongsTo(Users);
 
 Users.hasMany(WordOfDay);
 
-// // Notes -> belongsTo -> Users, 
-Notes.belongsToMany(Users, {
-  through: 'WordOfDay',
-  foreignKey: 'day',
+WordOfDay.hasOne(Notes);
+
+Notes.belongsTo(WordOfDay, {
+  foreignKey: {
+    name: 'note_id',
+  }
 });
 
 Users.hasMany(Notes);
+
+// // Notes -> belongsTo -> Users, 
+Notes.belongsTo(Users, {
+  foreignKey: 'user_id',
+});
+
+
 
 
 // User -> hasMany -> notes. 

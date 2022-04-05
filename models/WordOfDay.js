@@ -28,14 +28,6 @@ WordOfDay.init(
           key: 'id'
         }
       },
-      note_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'Notes',
-          key: 'id',
-        }
-      },
   },
   {
     sequelize,

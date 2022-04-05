@@ -5,7 +5,6 @@ const WordOfDayData = [
     day: 1,
     word: 'happy',
     user_id: 1,
-    note_id: 1,
   },
 ];
 

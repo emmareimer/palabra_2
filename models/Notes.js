@@ -25,16 +25,16 @@ Notes.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
-          key: 'id'
+          model: "Users",
+          key: "id",
         }
       },
       day: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'WordOfDay',
-          key: 'day',
+          model: "WordOfDay",
+          key: "day",
         }
       },
   },
@@ -43,7 +43,7 @@ Notes.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Notes',
+    modelName: "Notes",
   }
   );
 
