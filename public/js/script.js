@@ -13,6 +13,8 @@ document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
 // TODO: Assign other variables
 var storedWords = [];
 
+// ---------- TODO: JACOB - GET WORD OF DAY FROM DB ---------------
+
 // Get Word of Day Function
 function getWordofDay() {
   // clear previous data
