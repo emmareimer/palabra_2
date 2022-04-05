@@ -3,14 +3,14 @@ const { Model, DataTypes} = require('sequelize');
 // import our database connection from config.js
 const sequelize = require('../config/connection');
 const WordOfDay = require('./WordOfDay')
-const Users = require('./Users');
+const User = require('./User');
 
 
 // Initialize Product model (table) by extending off Sequelize's Model class
-class Notes extends Model {}
+class Note extends Model {}
 
 // set up fields and rules for Product model
-Notes.init(
+Note.init(
   {
       id: {
         type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ Notes.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
+          model: "User",
           key: "id",
         }
       },
@@ -43,8 +43,8 @@ Notes.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "Notes",
+    modelName: "Note",
   }
   );
 
-module.exports = Notes;
+module.exports = Note;

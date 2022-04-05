@@ -1,25 +1,25 @@
 // import models
 const WordOfDay = require('./WordOfDay');
-const Users = require('./Users');
-const Notes = require('./Notes');
+const User = require('./User');
+const Note = require('./Note');
 
 // Words -> belongsTo -> user. User -> hasMany -> Words
-WordOfDay.belongsTo(Users);
+WordOfDay.belongsTo(User);
 
-Users.hasMany(WordOfDay);
+User.hasMany(WordOfDay);
 
-WordOfDay.hasOne(Notes);
+WordOfDay.hasOne(Note);
 
-Notes.belongsTo(WordOfDay, {
+Note.belongsTo(WordOfDay, {
   foreignKey: {
     name: 'note_id',
   }
 });
 
-Users.hasMany(Notes);
+User.hasMany(Note);
 
-// // Notes -> belongsTo -> Users, 
-Notes.belongsTo(Users, {
+// // Note -> belongsTo -> User, 
+Note.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
@@ -27,7 +27,7 @@ Notes.belongsTo(Users, {
 
 
 // User -> hasMany -> notes. 
-// Users.hasMany(Notes);
+// User.hasMany(Notes);
 
 // Notes -> belongsTo -> Word
 // Notes.belongsToMany(WordOfDay, {
