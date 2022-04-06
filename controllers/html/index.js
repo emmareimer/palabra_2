@@ -6,11 +6,15 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.post('/login', (req, res) => {
+
+});
+
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const user =  await User.findOne({where: {id: req.session.user_id}})
         res.render('profile', {
-            user
+            user, isLoggedIn : true
         });
     } catch (err) {
         console.log(err)
@@ -29,17 +33,17 @@ router.get('/', (req, res) => {
 // TODO!!!!! WHY YOU NO WORK !!!!!!
 // Logout route
 // DELETE /api/auth/logout
-router.delete('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if (req.session) {
       req.session.destroy(err => {
         if (err) {
           res.status(400).send('Unable to log out')
         } else {
-            res.render('/home')
+            res.redirect('/')
         }
       });
     } else {
-      res.end()
+      res.redirect('/')
     }
   })
 
