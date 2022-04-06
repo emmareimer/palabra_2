@@ -1,6 +1,7 @@
 const withAuth = require('../../utils/auth')
 const router = require('express').Router();
 const User = require('../../models/User')
+
 router.get('/login', (req, res) => {
     res.render('login');
 });
@@ -22,6 +23,7 @@ router.get('/', (req, res) => {
     res.render('home', {isLoggedIn});
 });
 
+// TODO EMMA: Build past route handlebar /profile/word/{:ID}
 
 
 module.exports = router;

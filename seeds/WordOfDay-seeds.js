@@ -2,7 +2,7 @@ const { WordOfDay } = require('../models');
 
 const WordOfDayData = [
   {
-    day: 1,
+    day: 001,
     word: 'happy',
     user_id: 1,
   },
