@@ -35,7 +35,7 @@ router.delete('/logout', (req, res) => {
         if (err) {
           res.status(400).send('Unable to log out')
         } else {
-            res.redirect('/home')
+            res.render('/home')
         }
       });
     } else {
