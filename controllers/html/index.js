@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
     res.render('home', {isLoggedIn});
 });
 
+// TODO EMMA: Build past route handlebar /profile/word/{:ID}
 
 
 module.exports = router;
