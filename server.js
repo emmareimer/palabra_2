@@ -10,8 +10,8 @@ const { engine } = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 3001;
+const HOST = '0.0.0.0';
 const sess = {
   secret: process.env.SECRET || 'secret',
   cookie: {},
@@ -37,5 +37,5 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, HOST, () => console.log('Now listening'));
 });
