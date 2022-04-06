@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Note, WordOfDay } = require('../../models'); // need to update to our models *************
+// const bcrypt = require("bcryptjs")
 
 //current route /api/users
 
@@ -55,6 +56,7 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
+      console.log('username bad')
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -64,6 +66,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
+      console.log('pw bad')
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -80,6 +83,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log('here', err)
     res.status(400).json(err);
   }
 });
