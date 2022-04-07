@@ -1,63 +1,66 @@
-
 {{#if user}}
-    <h2> Hello, {{user.email}} </h2> 
-  {{/if}}
-     <section class="max-w-10xl text-center" id="top">
-      <article class="w-full">
-        <h3 class="text-6xl" id="word-of-day">
-          Word of the Day: <span id="date"></span>
-        </h3>
-        <h3 class="text-4xl" id="chosen-word"></h3>
-        <p id="definition"></p>
-        <p id="displayContainer"></p>
-        <p id="similar-container"></p>
-      </article>
+  <h2 id="hello_user"> Hey there, {{user}}! </h2>
+{{/if}}
+<section class="max-w-10xl text-center" id="top">
+  <article class="w-full">
+    <h3 class="text-6xl" id="word-of-day">
+      Word of the Day:
+      <span id="date"></span>
+    </h3>
+    <h3 class="text-4xl" id="chosen-word"></h3>
+    <p id="definition"></p>
+    <p id="displayContainer"></p>
+    <p id="similar-container"></p>
+  </article>
+</section>
 
-      <form action="/api/notes" method="post">
-        <label for="note_of_day">Add a Note</label>
-        <input type="text" id="note" name="note_of_day"><br><br>
-      </form>
-        <button id="select-button">Submit</button>
+{{!-- NOTE INPUT FORM --}}
 
-    </section>
+<div id="note-form">
+  <form action="/api/notes" method="post">
+    <label for="note_of_day">Add a Note</label>
+    <input type="text" id="note" name="note_of_day" /><br /><br />
+  </form>
+  <button id="select-button">Submit</button>
+</div>
 
-  {{!-- TODO Dylan start building 5 past word containers here: --}}
+{{! TODO Dylan start building 5 past word containers here: }}
 
-      <section class="my-4 word-container container">
-      <h3 class="text-4xl text-center">Past Words</h3>
+<section class="my-4 word-container container">
+  <h3 class="text-4xl text-center"></h3>
 
-      <article id="past-words" class="row justify-content-center">
+  <article id="past-words" class="row justify-content-center">
 
-        <div id="past-container-1" class="p-2 col-md-2 col-sm-6">
-          <p id="past-date-1"></p>
-          <p id="past-word-1">Sample</p>
-          <p id="past-note-1">Sample</p>
-        </div>
-        
-        <div id="past-container-2" class="p-2 col-md-2 col-sm-6">
-          <p id="past-date-2"></p>
-          <p id="past-word-2">Sample2</p>
-          <p id="past-note-2">Sample2</p>
-        </div>
-        
-        <div id="past-container-3" class="p-2 col-md-2 col-sm-6">
-          <p id="past-date-3"></p>
-          <p id="past-word-3">Sample3</p>
-          <p id="past-note-3">Sample3</p>
-        </div>
-        
-        <div id="past-container-4" class="p-2 col-md-2 col-sm-6">
-          <p id="past-date-4"></p>
-          <p id="past-word-4">Sample4</p>
-          <p id="past-note-4">Sample4</p>
-        </div>
-        
-        <div id="past-container-5" class="p-2 col-md-2 col-sm-6">
-          <p id="past-date-5"></p>
-          <p id="past-word-5">Sample5</p>
-          <p id="past-note-5">Sample5</p>
-        </div>
+    <div id="past-container-1" class="p-2 col-md-2 col-sm-6">
+      <p id="past-date-1"></p>
+      <p id="past-word-1">Sample</p>
+      <p id="past-note-1">Sample</p>
+    </div>
 
-      </article>
-    </section>
-        <script src="/js/script.js"></script>
+    <div id="past-container-2" class="p-2 col-md-2 col-sm-6">
+      <p id="past-date-2"></p>
+      <p id="past-word-2">Sample2</p>
+      <p id="past-note-2">Sample2</p>
+    </div>
+
+    <div id="past-container-3" class="p-2 col-md-2 col-sm-6">
+      <p id="past-date-3"></p>
+      <p id="past-word-3">Sample3</p>
+      <p id="past-note-3">Sample3</p>
+    </div>
+
+    <div id="past-container-4" class="p-2 col-md-2 col-sm-6">
+      <p id="past-date-4"></p>
+      <p id="past-word-4">Sample4</p>
+      <p id="past-note-4">Sample4</p>
+    </div>
+
+    <div id="past-container-5" class="p-2 col-md-2 col-sm-6">
+      <p id="past-date-5"></p>
+      <p id="past-word-5">Sample5</p>
+      <p id="past-note-5">Sample5</p>
+    </div>
+
+  </article>
+</section>
+<script src="/js/script.js"></script>
