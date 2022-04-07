@@ -116,7 +116,23 @@ function getWords() {
   wordContainer.appendChild(wordDiv);
 }
 
+// Get archived word
+function archiveWords() {
+  for (i = 1; i < 6; i++) {
+    // let pastDate = document.getElementById(`past-date-` + [i]);
+    // let pastWord = document.getElementById(`past-word-` + [i]);
+    // let pastNote = document.getElementById(`past-note-` + [i]);
+    let today = new Date().format(`MM-DD-YYYY`)
+    let day = today.substract(i, `D`)
+    // var curDay = Math.floor((today-new Date(today.getFullYear(), 0 , 0)) / (1000 * 60 * 60 * 24));
+
+    pastDate.textContent = day;
+    // pastWord.textContent = curDay - i;
+    // pastNote.textContent = das;
+  }
+}
 // call function on page load
 getWordofDay();
+archiveWords();
 // event listener for go button
 // selectButton.addEventListener("click", decision);
