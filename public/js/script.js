@@ -15,8 +15,37 @@ var storedWords = [];
 
 // ---------- TODO: JACOB - GET WORD OF DAY FROM DB ---------------
 
-// Get Word of Day Function
 function getWordofDay() {
+  // clear previous data
+  chosenWord.textContent = "";
+  headingForResult.textContent = "";
+  displayContainer.textContent = "";
+  const curDay = 1; // NEED TO MAKE THIS THE JULIAN DAY
+  // TODO: Fetch random word form random word API
+  fetch(`/api/word/${curDay}`, {
+    method: "GET",
+  })
+    .then(function (response) {
+      return response.json();
+    }) // Convert data to json
+    .then(function (data) {
+      // Sets the word of the day to the DOM
+      console.log(data);
+      var randomWord = data.word;
+      console.log(randomWord);
+      chosenWord.textContent = '" ' + randomWord + ' "';
+      chosenWord.setAttribute("data-word", randomWord);
+
+      // Sets word of the day to local storage
+      storedWords.push(randomWord);
+      localStorage.setItem("words", JSON.stringify(storedWords));
+    }); // End of thens
+  getWords();
+} // End of Get Word of Day function
+
+
+// Get Word of Day Function
+function getWordofDay1() {
   // clear previous data
   chosenWord.textContent = "";
   headingForResult.textContent = "";
@@ -41,20 +70,20 @@ function getWordofDay() {
   getWords();
 } // End of Get Word of Day function
 
-// function to call the appropriate function based on user choice
-function decision() {
-  var passedInWord = document
-    .getElementById("chosen-word")
-    .getAttribute("data-word");
-  var ddl = document.getElementById("lang-select");
-  var selected = ddl.value;
-  // if statement to evaluate data attribute
-  if (selected == "similar-words") {
-    similar(passedInWord);
-  } else if (selected == "defintion") {
-    defintion(passedInWord);
-  }
-} //end of decision function
+// // function to call the appropriate function based on user choice
+// function decision() {
+//   var passedInWord = document
+//     .getElementById("chosen-word")
+//     .getAttribute("data-word");
+//   var ddl = document.getElementById("lang-select");
+//   var selected = ddl.value;
+//   // if statement to evaluate data attribute
+//   if (selected == "similar-words") {
+//     similar(passedInWord);
+//   } else if (selected == "defintion") {
+//     defintion(passedInWord);
+//   }
+// } //end of decision function
 
 // THIS FUNCTION PINGS THE THESAURUS
 function similar(rword) {
