@@ -4,19 +4,18 @@ const User = require('./User');
 const Note = require('./Note');
 
 // Words -> belongsTo -> user. User -> hasMany -> Words
-WordOfDay.belongsTo(User);
 
-User.hasMany(WordOfDay);
-
-WordOfDay.hasOne(Note);
-
-Note.belongsTo(WordOfDay, {
-  foreignKey: {
-    name: 'note_id',
-  }
+WordOfDay.hasMany(Note, {
+  foreignKey: 'day',
 });
 
-User.hasMany(Note);
+Note.belongsTo(WordOfDay, {
+  foreignKey: 'day',
+  });
+
+User.hasMany(Note, {
+  foreignKey: 'user_id',
+});
 
 // // Note -> belongsTo -> User, 
 Note.belongsTo(User, {
@@ -25,23 +24,6 @@ Note.belongsTo(User, {
 
 
 
-// Words.belongsToMany(Users, {
-//     through: '',
-//     foreignKey: '',
-// });
-
-// // Products belongsTo Category 
-// // Products belongToMany Tags (through ProductTag)
-// Product.belongsToMany(Tag, { 
-//   through: 'ProductTag',
-//   foreignKey: 'product_id',
-//    });
-
-// // Tags belongToMany Products (through ProductTag)
-// Tag.belongsToMany(Product, { 
-//   through: 'ProductTag',
-//   foreignKey: 'tag_id', 
-// });
 
 module.exports = {
   User,

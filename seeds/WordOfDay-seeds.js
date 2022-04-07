@@ -4,7 +4,6 @@ const WordOfDayData = [
   {
     day: 001,
     word: 'happy',
-    user_id: 1,
   },
 ];
 
