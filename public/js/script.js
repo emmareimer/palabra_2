@@ -23,15 +23,11 @@ function getWordofDay() {
   let today = new Date();
   var curDay = Math.floor((today-new Date(today.getFullYear(), 0 , 0)) / (1000 * 60 * 60 * 24));
   // TODO: Fetch random word form random word API
-  fetch(`/api/word/${curDay}`, {
-    method: "GET",
-  })
+  axios.get(`/api/word/${curDay}`)
     .then(function (response) {
-      return response.json();
-    }) // Convert data to json
-    .then(function (data) {
       // Sets the word of the day to the DOM
-      var randomWord = data.word;
+      console.log(response);
+      var randomWord = response.data.word;
       chosenWord.textContent = '" ' + randomWord + ' "';
       chosenWord.setAttribute("data-word", randomWord);
 
