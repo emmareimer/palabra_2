@@ -135,6 +135,10 @@
   #definition {
     font-size: 25px;
   }
+
+  #article {
+    font-style: italic;
+  }
   
   .saved-section {
     margin-top: auto;

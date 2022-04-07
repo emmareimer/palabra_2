@@ -109,17 +109,18 @@ function defintion(rword) {
         let article = data[0].fl;
         console.log(article);
         let artHead = document.createElement("div");
-        artHead.setAttribute('id', 'definition');
-        artHead.textContent = `${article} | `;
+        artHead.setAttribute('id', 'article');
+        artHead.textContent = `| ${article} | `;
         displayContainer.appendChild(artHead);
+        console.log(data)
       } else {
         var gotNice = data[0];
         headingForResult.textContent = "";
         displayContainer.textContent = gotNice;
         let article = data[0].fl;
         let artHead = document.createElement("div");
-        artHead.setAttribute('id', 'definition');
-        artHead.textContent = `${article} | `;
+        artHead.setAttribute('id', 'article');
+        artHead.textContent = `| ${article} | `;
         displayContainer.appendChild(artHead);
       }
 
@@ -152,13 +153,8 @@ function archiveWords() {
     // pastNote.textContent = das;
   }
 }
-
-function saveNote() {
-}
-
-
 // call function on page load
 getWordofDay();
 archiveWords();
 // event listener for go button
-selectButton.addEventListener("click", saveNote); // **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so
+// selectButton.addEventListener("click", displayPastWord); **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so
