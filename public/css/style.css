@@ -4,6 +4,7 @@
     --dark: #231f20;
     --lime: #dac292;
     --beige: #c4b7a6;
+    --white: #FAF9F6;
   }
   
   * {
@@ -22,7 +23,7 @@
   
   #palabra {
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    color: #e6e2d3;
+    color: var(--white);
   }
 
   #hello_user {
@@ -40,6 +41,10 @@
   
   a:hover {
     text-decoration: none;
+  }
+
+  nav {
+    margin: 10px;
   }
   
   #input-dropwdown {
