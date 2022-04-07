@@ -152,8 +152,13 @@ function archiveWords() {
     // pastNote.textContent = das;
   }
 }
+
+function saveNote() {
+}
+
+
 // call function on page load
 getWordofDay();
 archiveWords();
 // event listener for go button
-// selectButton.addEventListener("click", displayPastWord); **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so
+selectButton.addEventListener("click", saveNote); // **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so
