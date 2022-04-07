@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     try {
       console.log(`inside of post`);
       const noteData = await Note.create(req.body);
-      res.status(200).json(noteData);
+      res.render('profile');
     } catch (err) {
       res.status(400).json(err);
     }

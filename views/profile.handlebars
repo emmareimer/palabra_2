@@ -1,5 +1,5 @@
 {{#if user}}
-  <h2 id="hello_user"> Hey there, {{user}}! </h2>
+  <h2 id="hello_user"> Welcome back! </h2>
 {{/if}}
 <section class="max-w-10xl text-center" id="top">
   <article class="w-full">
@@ -20,8 +20,8 @@
   <form action="/api/notes" method="post">
     <label for="note_of_day">Add a Note</label>
     <input type="text" id="note" name="note_of_day" /><br /><br />
-  </form>
-  <button id="select-button">Submit</button>
+  <button id="select-button" type="submit">Submit</button>
+    </form>
 </div>
 
 {{! TODO Dylan start building 5 past word containers here: }}

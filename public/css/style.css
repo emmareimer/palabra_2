@@ -29,6 +29,7 @@
   #hello_user {
     color: var(--dark);
     padding-left: 25px;
+    padding-top: 25px;
     font-family: 'Playfair Display', serif;
     font-size: 30px;
   }
