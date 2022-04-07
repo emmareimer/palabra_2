@@ -101,8 +101,9 @@
   
   #chosen-word {
     color: var(--dark);
-    margin: 10px;
+    margin: 30px;
     font-family: 'Playfair Display', serif;
+    font-size: 80px;
   }
   
   .my-4 {
