@@ -21,21 +21,22 @@ function getWordofDay() {
   headingForResult.textContent = "";
   displayContainer.textContent = "";
   let today = new Date();
-  var curDay = Math.floor((today-new Date(today.getFullYear(), 0 , 0)) / (1000 * 60 * 60 * 24));
+  var curDay = Math.floor(
+    (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
+  );
   // TODO: Fetch random word form random word API
-  axios.get(`/api/word/${curDay}`)
-    .then(function (response) {
-      // Sets the word of the day to the DOM
-      console.log(response);
-      var randomWord = response.data.word;
-      chosenWord.textContent = '" ' + randomWord + ' "';
-      chosenWord.setAttribute("data-word", randomWord);
+  axios.get(`/api/word/${curDay}`).then(function (response) {
+    // Sets the word of the day to the DOM
+    console.log(response);
+    var randomWord = response.data.word;
+    chosenWord.textContent = '" ' + randomWord + ' "';
+    chosenWord.setAttribute("data-word", randomWord);
 
-      // Sets word of the day to local storage
-      storedWords.push(randomWord);
-      localStorage.setItem("words", JSON.stringify(storedWords));
-      defintion(randomWord);
-    }); // End of thens
+    // Sets word of the day to local storage
+    storedWords.push(randomWord);
+    localStorage.setItem("words", JSON.stringify(storedWords));
+    defintion(randomWord);
+  }); // End of thens
   // getWords();
 } // End of Get Word of Day function
 
@@ -118,16 +119,26 @@ function getWords() {
 
 // Get archived word
 function archiveWords() {
-
   for (let i = 1; i < 6; i++) {
     let pastDate = document.getElementById("past-date-" + i);
-    // let pastWord = document.getElementById(`past-word-` + [i]);
+    let pastWord = document.getElementById(`past-word-` + [i]);
     // let pastNote = document.getElementById(`past-note-` + [i]);
-    let today = moment().subtract({days: i});
-    // var curDay = Math.floor((today-new Date(today.getFullYear(), 0 , 0)) / (1000 * 60 * 60 * 24));
+    let date = moment().subtract({ days: i });
 
-    pastDate.textContent = today.format('LL');
-    // pastWord.textContent = curDay - i;
+    let today = new Date();
+    var curDay = Math.floor(
+      (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
+    );
+
+    axios.get(`/api/word/${curDay - i}`).then(function (response) {
+      // Sets the word of the day to the DOM
+      console.log(typeof response.data.word);
+      pastWord = response.data.word;
+      pastNote = response.data.note || null;
+    });
+
+    pastDate.textContent = date.format("LL");
+    pastWord.textContent = pastWord;
     // pastNote.textContent = das;
   }
 }
