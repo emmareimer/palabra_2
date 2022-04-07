@@ -16,12 +16,8 @@ router.get('/', async (req, res) => {
 
 // GET a single user - not needed unless for auth reasons?
 router.get('/:id', async (req, res) => {
-// need to add grabbing userID from current logged in user = can use with auth??
-  const userID = 1;
   try {
     const userData = await User.findByPk(req.params.id, {
-      // JOIN with locations, using the Trip through table
-      // include: [{ model: Location, through: Trip, as: 'planned_trips' }]
     });
 
     if (!userData) {
