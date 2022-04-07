@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      res.redirect('/profile');
     });
   } catch (err) {
     res.status(400).json(err);
@@ -71,6 +71,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_email = userData.email;
       req.session.logged_in = true;
       
       res.redirect('/profile')
@@ -83,6 +84,10 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// Create endpoint /api/email that handles email logic
+
+// On front end when user initiates email send button, hit email endpoint 
 
 
 
