@@ -1,30 +1,30 @@
 var nodemailer = require('nodemailer');
 const User = require('../../models/User')
 
-const user =  await User.findOne({where: {email: req.session.email}})
-
-
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'palabra.word.of.day@gmail.com',
-    pass: 'welovewords!'
-  }
+const currentUserEmail =  await User.findOne({where: {email: req.session.email}})
+  
+  
+let mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'palabra.word.of.day@gmail.com',
+        pass: 'welovewords!'
+    }
 });
-
-var mailOptions = {
-  from: 'palabra.word.of.day@gmail.com',
-  to: email,
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
+  
+let mailDetails = {
+    from: 'xyz@gmail.com',
+    to: currentUserEmail,
+    subject: '',
+    text: 'Node.js testing mail for GeeksforGeeks'
 };
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
+  
+mailTransporter.sendMail(mailDetails, function(err, data) {
+    if(err) {
+        console.log('Error Occurs');
+    } else {
+        console.log('Email sent successfully');
+    }
 });
 
 module.exports = nodemailer;
