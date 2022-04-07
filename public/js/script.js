@@ -67,7 +67,7 @@ function similar(rword) {
         var similarThree = data[0].meta.syns[0][2];
         let newHeading = document.createElement("div");
         newHeading.setAttribute('id', 'definition');
-        newHeading.textContent = "Similar Words";
+        newHeading.textContent = "";
         displayContainer.appendChild(newHeading);
         similarContainer.textContent = `${similarOne}, ${similarTwo}, ${similarThree}`;
       } else {
@@ -76,7 +76,7 @@ function similar(rword) {
         var wordThree = data[2];
         let newHeading = document.createElement("div");
         newHeading.setAttribute('id', 'definition');
-        newHeading.textContent = "Similar Words";
+        newHeading.textContent = "";
         displayContainer.appendChild(newHeading);
         similarContainer.textContent = `${oneWorder},  ${wordTwo}, ${wordThree}`;
       }
@@ -104,22 +104,22 @@ function defintion(rword) {
       // if statement to evaluate data if string then else
       if (typeof data[0] != typeof "string") {
         var gotMeta = data[0].shortdef[0];
-        headingForResult.textContent = "What It Means";
+        headingForResult.textContent = "";
         displayContainer.textContent = gotMeta;
         let article = data[0].fl;
         console.log(article);
         let artHead = document.createElement("div");
         artHead.setAttribute('id', 'definition');
-        artHead.textContent = `Article of Speech: ${article}`;
+        artHead.textContent = `${article} | `;
         displayContainer.appendChild(artHead);
       } else {
         var gotNice = data[0];
-        headingForResult.textContent = "What It Means";
+        headingForResult.textContent = "";
         displayContainer.textContent = gotNice;
         let article = data[0].fl;
         let artHead = document.createElement("div");
         artHead.setAttribute('id', 'definition');
-        artHead.textContent = `Article of Speech: ${article}`;
+        artHead.textContent = `${article} | `;
         displayContainer.appendChild(artHead);
       }
 
