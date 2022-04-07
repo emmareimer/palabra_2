@@ -39,6 +39,7 @@ function getWordofDay() {
   // getWords();
 } // End of Get Word of Day function
 
+
 // THIS FUNCTION PINGS THE THESAURUS
 // function similar(rword) {
 //   // clear previous data
