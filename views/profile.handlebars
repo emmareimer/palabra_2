@@ -13,8 +13,11 @@
         <p id="similar-container"></p>
       </article>
 
-      
-        <button id="select-button">Go!</button>
+      <form action="/api/notes" method="post">
+        <label for="note_of_day">Add a Note</label>
+        <input type="text" id="note" name="note_of_day"><br><br>
+      </form>
+        <button id="select-button">Submit</button>
 
     </section>
 
