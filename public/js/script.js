@@ -159,7 +159,7 @@ function archiveWords() {
 
     pastDate.textContent = date.format("LL");
     pastWord.textContent = pastWord;
-    // pastNote.textContent = das;
+    pastNote.textContent = pastNote;
   }
 }
 // call function on page load
