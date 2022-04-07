@@ -20,7 +20,8 @@ function getWordofDay() {
   chosenWord.textContent = "";
   headingForResult.textContent = "";
   displayContainer.textContent = "";
-  const curDay = 1; // NEED TO MAKE THIS THE JULIAN DAY
+  let today = new Date();
+  var curDay = Math.floor((today-new Date(today.getFullYear(), 0 , 0)) / (1000 * 60 * 60 * 24));
   // TODO: Fetch random word form random word API
   fetch(`/api/word/${curDay}`, {
     method: "GET",
@@ -30,9 +31,7 @@ function getWordofDay() {
     }) // Convert data to json
     .then(function (data) {
       // Sets the word of the day to the DOM
-      console.log(data);
       var randomWord = data.word;
-      console.log(randomWord);
       chosenWord.textContent = '" ' + randomWord + ' "';
       chosenWord.setAttribute("data-word", randomWord);
 
