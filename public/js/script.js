@@ -13,7 +13,8 @@ document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
 // TODO: Assign other variables
 var storedWords = [];
 
-// ---------- TODO: JACOB - GET WORD OF DAY FROM DB ---------------
+// function displayPastWord(word) {
+// } //end of displayPastWord function
 
 function getWordofDay() {
   // clear previous data
@@ -36,46 +37,52 @@ function getWordofDay() {
     storedWords.push(randomWord);
     localStorage.setItem("words", JSON.stringify(storedWords));
     defintion(randomWord);
-  }); // End of thens
-  // getWords();
+    similar(randomWord);
+  });
 } // End of Get Word of Day function
 
 // THIS FUNCTION PINGS THE THESAURUS
-// function similar(rword) {
-//   // clear previous data
-//   displayContainer.textContent = "";
-//   var key = "ca17d58e-66c7-41a6-a5c6-589cfe4e0342";
-//   var requestOptions = {
-//     method: "GET",
-//     redirect: "follow",
-//   };
-//   fetch(
-//     "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/" +
-//       rword +
-//       "?key=" +
-//       key,
-//     requestOptions
-//   )
-//     .then((response) => response.json())
-//     .then(function (data) {
-//       console.log(data);
-//       // if statement to evaluate data - else if it is a string already
-//       if (typeof data[0] != typeof "string") {
-//         var similarOne = data[0].meta.syns[0][0];
-//         var similarTwo = data[0].meta.syns[0][1];
-//         var similarThree = data[0].meta.syns[0][2];
-//         headingForResult.textContent = "What It Means";
-//         displayContainer.textContent = `${similarOne}, ${similarTwo}, ${similarThree}`;
-//       } else {
-//         var oneWorder = data[0];
-//         var wordTwo = data[1];
-//         var wordThree = data[2];
-//         headingForResult.textContent = "Similar Words";
-//         displayContainer.textContent = `${oneWorder},  ${wordTwo}, ${wordThree}`;
-//       }
-//     })
-//     .catch((error) => console.log("error", error));
-// } //End of Thesarus Function
+function similar(rword) {
+  // clear previous data
+  displayContainer.textContent = "";
+  var key = "ca17d58e-66c7-41a6-a5c6-589cfe4e0342";
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+  fetch(
+    "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/" +
+      rword +
+      "?key=" +
+      key,
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then(function (data) {
+      console.log(data);
+      // if statement to evaluate data - else if it is a string already
+      if (typeof data[0] != typeof "string") {
+        var similarOne = data[0].meta.syns[0][0];
+        var similarTwo = data[0].meta.syns[0][1];
+        var similarThree = data[0].meta.syns[0][2];
+        let newHeading = document.createElement("div");
+        newHeading.setAttribute("id", "definition");
+        newHeading.textContent = "";
+        displayContainer.appendChild(newHeading);
+        similarContainer.textContent = `${similarOne}, ${similarTwo}, ${similarThree}`;
+      } else {
+        var oneWorder = data[0];
+        var wordTwo = data[1];
+        var wordThree = data[2];
+        let newHeading = document.createElement("div");
+        newHeading.setAttribute("id", "definition");
+        newHeading.textContent = "";
+        displayContainer.appendChild(newHeading);
+        similarContainer.textContent = `${oneWorder},  ${wordTwo}, ${wordThree}`;
+      }
+    })
+    .catch((error) => console.log("error", error));
+} //End of Thesarus Function
 
 // THIS FUNCTION PINGS THE DICTIONARY
 function defintion(rword) {
@@ -93,29 +100,42 @@ function defintion(rword) {
   )
     .then((response) => response.json())
     .then(function (data) {
+      console.log(data);
       // if statement to evaluate data if string then else
       if (typeof data[0] != typeof "string") {
         var gotMeta = data[0].shortdef[0];
-        headingForResult.textContent = "What It Means";
+        headingForResult.textContent = "";
         displayContainer.textContent = gotMeta;
+        let article = data[0].fl;
+        console.log(article);
+        let artHead = document.createElement("div");
+        artHead.setAttribute("id", "article");
+        artHead.textContent = `| ${article} | `;
+        displayContainer.appendChild(artHead);
+        console.log(data);
       } else {
         var gotNice = data[0];
-        headingForResult.textContent = "What It Means";
+        headingForResult.textContent = "";
         displayContainer.textContent = gotNice;
+        let article = data[0].fl;
+        let artHead = document.createElement("div");
+        artHead.setAttribute("id", "article");
+        artHead.textContent = `| ${article} | `;
+        displayContainer.appendChild(artHead);
       }
     })
     .catch((error) => console.log("error", error));
 } //end of Dictionary Function
 
 // Get from local storage and display to the table in the html framework
-function getWords() {
-  var words = localStorage.getItem("words");
-  words = JSON.parse(words);
+// function getWords() {
+//   var words = localStorage.getItem("words");
+//   words = JSON.parse(words);
 
-  var wordDiv = document.createElement("div");
-  wordDiv.textContent = words;
-  wordContainer.appendChild(wordDiv);
-}
+//   var wordDiv = document.createElement("div");
+//   wordDiv.textContent = words;
+//   wordContainer.appendChild(wordDiv);
+// }
 
 // Get archived word
 function archiveWords() {
@@ -146,4 +166,4 @@ function archiveWords() {
 getWordofDay();
 archiveWords();
 // event listener for go button
-// selectButton.addEventListener("click", decision);
+// selectButton.addEventListener("click", displayPastWord); **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so

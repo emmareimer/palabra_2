@@ -1,5 +1,5 @@
 {{#if user}}
-  <h2> Hello, {{user.email}} </h2>
+  <h2 id="hello_user"> Welcome back! </h2>
 {{/if}}
 <section class="max-w-10xl text-center" id="top">
   <article class="w-full">
@@ -12,25 +12,22 @@
     <p id="displayContainer"></p>
     <p id="similar-container"></p>
   </article>
-
-  <article class="w-full text-center" id="input-dropwdown">
-    <select name="language-select" id="lang-select">
-      <option value="similar-words" class="dropdown" id="similarWords" selected>
-        Similar Words
-      </option>
-      <option value="defintion" class="dropdown" id="definition">
-        Definition
-      </option>
-    </select>
-    <br />
-    <button id="select-button">Go!</button>
-  </article>
 </section>
+
+{{! NOTE INPUT FORM }}
+
+<div id="note-form">
+  <form action="/api/notes" method="post">
+    <label for="note_of_day">Add a Note</label>
+    <input type="text" id="note" name="note_of_day" />
+    <button id="select-button" type="submit">Submit</button>
+  </form>
+</div>
 
 {{! TODO Dylan start building 5 past word containers here: }}
 
 <section class="my-4 word-container container">
-  <h3 class="text-4xl text-center">Past Words</h3>
+  <h3 class="text-4xl text-center"></h3>
 
   <article id="past-words" class="row justify-content-center">
 
