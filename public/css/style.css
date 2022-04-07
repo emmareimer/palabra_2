@@ -4,6 +4,7 @@
     --dark: #231f20;
     --lime: #dac292;
     --beige: #c4b7a6;
+    --white: #FAF9F6;
   }
   
   * {
@@ -21,13 +22,14 @@
   }
   
   #palabra {
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    color: #e6e2d3;
+    font-family: 'Homemade Apple', cursive;
+    color: var(--white);
   }
 
   #hello_user {
     color: var(--dark);
     padding-left: 25px;
+    padding-top: 25px;
     font-family: 'Playfair Display', serif;
     font-size: 30px;
   }
@@ -40,6 +42,10 @@
   
   a:hover {
     text-decoration: none;
+  }
+
+  nav {
+    margin: 10px;
   }
   
   #input-dropwdown {
@@ -128,6 +134,10 @@
   
   #definition {
     font-size: 25px;
+  }
+
+  #article {
+    font-style: italic;
   }
   
   .saved-section {

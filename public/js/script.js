@@ -109,17 +109,18 @@ function defintion(rword) {
         let article = data[0].fl;
         console.log(article);
         let artHead = document.createElement("div");
-        artHead.setAttribute('id', 'definition');
-        artHead.textContent = `${article} | `;
+        artHead.setAttribute('id', 'article');
+        artHead.textContent = `| ${article} | `;
         displayContainer.appendChild(artHead);
+        console.log(data)
       } else {
         var gotNice = data[0];
         headingForResult.textContent = "";
         displayContainer.textContent = gotNice;
         let article = data[0].fl;
         let artHead = document.createElement("div");
-        artHead.setAttribute('id', 'definition');
-        artHead.textContent = `${article} | `;
+        artHead.setAttribute('id', 'article');
+        artHead.textContent = `| ${article} | `;
         displayContainer.appendChild(artHead);
       }
 
