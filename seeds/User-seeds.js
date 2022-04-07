@@ -13,3 +13,5 @@ const seedUser = () => User.bulkCreate(UserData);
 module.exports = seedUser;
 
 //adding note
+
+// adding another note
