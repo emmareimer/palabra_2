@@ -100,16 +100,29 @@ function defintion(rword) {
   )
     .then((response) => response.json())
     .then(function (data) {
+      console.log(data);
       // if statement to evaluate data if string then else
       if (typeof data[0] != typeof "string") {
         var gotMeta = data[0].shortdef[0];
         headingForResult.textContent = "What It Means";
         displayContainer.textContent = gotMeta;
+        let article = data[0].fl;
+        console.log(article);
+        let artHead = document.createElement("div");
+        artHead.setAttribute('id', 'definition');
+        artHead.textContent = `Article of Speech: ${article}`;
+        displayContainer.appendChild(artHead);
       } else {
         var gotNice = data[0];
         headingForResult.textContent = "What It Means";
         displayContainer.textContent = gotNice;
+        let article = data[0].fl;
+        let artHead = document.createElement("div");
+        artHead.setAttribute('id', 'definition');
+        artHead.textContent = `Article of Speech: ${article}`;
+        displayContainer.appendChild(artHead);
       }
+
     })
     .catch((error) => console.log("error", error));
 } //end of Dictionary Function
