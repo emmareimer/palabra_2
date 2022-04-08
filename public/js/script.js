@@ -146,33 +146,42 @@ function archiveWords() {
       (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
     );
 
-    axios.get(`/api/word/${curDay - i}`).then(function (response) {
+    let day = curDay - i;
+
+    axios.get(`/api/word/${day}`).then(function (response) {
       archivedWord = response.data.word;
+      console.log(response);
       pastDate.textContent = date.format("LL");
       pastWord.innerHTML = archivedWord;
     });
 
     axios.get(`/api/notes`).then(function (response) {
-      console.log(response);
-      pastNote.textContent = response.data.note_of_day || "No note here!";
+      let find = response.data.find((data) => data.day === day);
+      if (find) {
+        pastNote.textContent = find.note_of_day;
+      } else {
+        pastNote.textContent = "No note here!";
+      }
     });
-
   }
 }
 
 function createNote() {
-console.log(`in createNote`);
-  let note = document.querySelector('#note').value.trim();
+  console.log(`in createNote`);
+  let note = document.querySelector("#note").value.trim();
   let today = new Date();
-  let curDay = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-  axios.post(`/api/notes/`, {
-    note_of_day: `${note}`,
-    day: `${curDay}`,
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch((error) => console.log("error", error));
+  let curDay = Math.floor(
+    (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
+  );
+  axios
+    .post(`/api/notes/`, {
+      note_of_day: `${note}`,
+      day: `${curDay}`,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch((error) => console.log("error", error));
 }
 
 // call function on page load
