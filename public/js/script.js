@@ -28,7 +28,7 @@ function getWordofDay() {
   // TODO: Fetch random word form random word API
   axios.get(`/api/word/${curDay}`).then(function (response) {
     // Sets the word of the day to the DOM
-    console.log(response);
+    // console.log(response);
     var randomWord = response.data.word;
     chosenWord.textContent = '" ' + randomWord + ' "';
     chosenWord.setAttribute("data-word", randomWord);
@@ -59,7 +59,7 @@ function similar(rword) {
   )
     .then((response) => response.json())
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       // if statement to evaluate data - else if it is a string already
       if (typeof data[0] != typeof "string") {
         var similarOne = data[0].meta.syns[0][0];
@@ -87,7 +87,6 @@ function similar(rword) {
 // THIS FUNCTION PINGS THE DICTIONARY
 function defintion(rword) {
   var word = rword;
-  console.log(word);
   var requestOptions = {
     method: "GET",
     redirect: "follow",
@@ -100,19 +99,16 @@ function defintion(rword) {
   )
     .then((response) => response.json())
     .then(function (data) {
-      console.log(data);
       // if statement to evaluate data if string then else
       if (typeof data[0] != typeof "string") {
         var gotMeta = data[0].shortdef[0];
         headingForResult.textContent = "";
         displayContainer.textContent = gotMeta;
         let article = data[0].fl;
-        console.log(article);
         let artHead = document.createElement("div");
         artHead.setAttribute("id", "article");
         artHead.textContent = `| ${article} | `;
         displayContainer.appendChild(artHead);
-        console.log(data);
       } else {
         var gotNice = data[0];
         headingForResult.textContent = "";
@@ -152,18 +148,38 @@ function archiveWords() {
 
     axios.get(`/api/word/${curDay - i}`).then(function (response) {
       // Sets the word of the day to the DOM
-      console.log(typeof response.data.word);
+      // console.log(typeof response.data.word);
       pastWord = response.data.word;
       pastNote = response.data.note || null;
     });
 
-    pastDate.textContent = date.format("LL");
-    pastWord.textContent = pastWord;
-    pastNote.textContent = pastNote;
+    // pastDate.textContent = date.format("LL");
+    // pastWord.textContent = pastWord;
+    // pastNote.textContent = pastNote;
   }
 }
+
+function createNote() {
+console.log(`in createNote`);
+  let note = document.querySelector('#note').value.trim();
+  const userid = 2;
+  console.log(userid);
+  let today = new Date();
+  let curDay = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  axios.post(`/api/notes/`, {
+    note_of_day: `${note}`,
+    user_id: `${userid}`,
+    day: `${curDay}`,
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch((error) => console.log("error", error));
+}
+
+
+
 // call function on page load
 getWordofDay();
 archiveWords();
 // event listener for go button
-// selectButton.addEventListener("click", displayPastWord); **********change the listener to the past words similar to an activity with a clickable alphabet in like week 3-6 or so
