@@ -152,9 +152,13 @@ function archiveWords() {
 
     axios.get(`/api/word/${curDay - i}`).then(function (response) {
       archivedWord = response.data.word;
-      pastNote = response.data.note || null;
       pastDate.textContent = date.format("LL");
       pastWord.innerHTML = archivedWord;
+    });
+
+    axios.get(`/api/notes`).then(function (response) {
+      console.log(response);
+      pastNote.textContent = response.data.note_of_day || "No note here!";
     });
   }
 }
