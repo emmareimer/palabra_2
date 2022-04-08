@@ -1,6 +1,7 @@
 {{#if user}}
   <h2 id="hello_user"> Welcome back! </h2>
 {{/if}}
+
 <section class="max-w-10xl text-center" id="top">
   <article class="w-full">
     <h3 class="text-6xl" id="word-of-day">
@@ -19,7 +20,7 @@
 <div id="note-form">
   <form action="/api/notes" method="post">
     <label for="note_of_day">Add a Note</label>
-    <input type="text" id="note" name="note_of_day" />
+    <input type="text" id="note" name="note_of_day" day="" />
     <button id="select-button" type="submit">Submit</button>
   </form>
 </div>
