@@ -138,7 +138,7 @@ function archiveWords() {
   for (let i = 1; i < 6; i++) {
     let pastDate = document.getElementById("past-date-" + i);
     let pastWord = document.getElementById(`past-word-` + [i]);
-    // let pastNote = document.getElementById(`past-note-` + [i]);
+    let pastNote = document.getElementById(`past-note-` + [i]);
     let date = moment().subtract({ days: i });
 
     let today = new Date();
@@ -147,15 +147,16 @@ function archiveWords() {
     );
 
     axios.get(`/api/word/${curDay - i}`).then(function (response) {
-      // Sets the word of the day to the DOM
-      // console.log(typeof response.data.word);
-      pastWord = response.data.word;
-      pastNote = response.data.note || null;
+      archivedWord = response.data.word;
+      pastDate.textContent = date.format("LL");
+      pastWord.innerHTML = archivedWord;
     });
 
-    // pastDate.textContent = date.format("LL");
-    // pastWord.textContent = pastWord;
-    // pastNote.textContent = pastNote;
+    axios.get(`/api/notes`).then(function (response) {
+      console.log(response);
+      pastNote.textContent = response.data.note_of_day || "No note here!";
+    });
+
   }
 }
 
