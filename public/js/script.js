@@ -151,15 +151,10 @@ function archiveWords() {
     );
 
     axios.get(`/api/word/${curDay - i}`).then(function (response) {
-      // Sets the word of the day to the DOM
-      console.log(typeof response.data.word);
       archivedWord = response.data.word;
-      console.log(archivedWord);
       pastNote = response.data.note || null;
       pastDate.textContent = date.format("LL");
-      console.log(archivedWord);
       pastWord.innerHTML = archivedWord;
-      pastNote.textContent = null;
     });
   }
 }
