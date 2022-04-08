@@ -35,8 +35,10 @@ router.get('/:id', async (req, res) => {
 // CREATE a note
 router.post('/', async (req, res) => {
     try {
-      const noteData = await Note.create(req.body);
-      // res.render('profile');
+      const note = req.body.note_of_day;
+      const user = req.session.user_id;
+      const day = req.body.day;
+      const noteData = await Note.create({ note_of_day: `${note}`, user_id: `${user}`, day: `${day}` });
       res.status(200).json(noteData);
       res.render('profile')
     } catch (err) {

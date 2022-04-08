@@ -162,13 +162,10 @@ function archiveWords() {
 function createNote() {
 console.log(`in createNote`);
   let note = document.querySelector('#note').value.trim();
-  const userid = 2;
-  console.log(userid);
   let today = new Date();
   let curDay = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
   axios.post(`/api/notes/`, {
     note_of_day: `${note}`,
-    user_id: `${userid}`,
     day: `${curDay}`,
   })
   .then(function (response) {
@@ -176,8 +173,6 @@ console.log(`in createNote`);
   })
   .catch((error) => console.log("error", error));
 }
-
-
 
 // call function on page load
 getWordofDay();
