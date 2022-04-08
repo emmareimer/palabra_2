@@ -46,11 +46,11 @@ router.get('/:id', async (req, res) => {
   router.post('/', withAuth, async (req, res) => {
     try {
       console.log(req.body)
-      const currentDay = await WordOfDay.findOne({where: {day: req.body.day}})
+      const currentDay = await WordOfDay.findAll({where: {day: WordOfDay.day}})
       const newNote = await Note.create({
         ...req.body,
         user_id: req.session.user_id,
-        day: currentDay.day,
+        day: currentDay,
       });
 
       res.status(200).json(newNote);

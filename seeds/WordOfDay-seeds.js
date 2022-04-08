@@ -37,6 +37,30 @@ const WordOfDayData = [
     day: 098,
     word: 'mad',
   },
+  {
+    day: 099,
+    word: 'genuine',
+  },
+  {
+    day: 100,
+    word: 'crazy',
+  },
+  {
+    day: 101,
+    word: 'terrible',
+  },
+  {
+    day: 102,
+    word: 'console',
+  },
+  {
+    day: 103,
+    word: 'bug',
+  },
+  {
+    day: 104,
+    word: 'coffee',
+  },
 ];
 
 const seedWordOfDay = () => WordOfDay.bulkCreate(WordOfDayData);
