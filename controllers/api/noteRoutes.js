@@ -1,3 +1,4 @@
+const withAuth = require('../../utils/auth')
 const router = require('express').Router();
 const { User, Note, WordOfDay } = require('../../models'); // need to update to our models *************
 
@@ -32,11 +33,28 @@ router.get('/:id', async (req, res) => {
 
 
 // CREATE a note
-router.post('/', async (req, res) => {
+// router.post('/', async (req, res) => {
+//     try {
+//       user_id: req.session.user_id
+//       const noteData = await Note.create(req.body);
+//       res.render('profile');
+//     } catch (err) {
+//       res.status(400).json(err);
+//     }
+//   });
+
+  router.post('/', withAuth, async (req, res) => {
     try {
-      console.log(`inside of post`);
-      const noteData = await Note.create(req.body);
-      res.render('profile');
+      console.log(req.body)
+      const currentDay = await WordOfDay.findOne({where: {day: req.body.day}})
+      const newNote = await Note.create({
+        ...req.body,
+        user_id: req.session.user_id,
+        day: currentDay.day,
+      });
+
+      res.status(200).json(newNote);
+      // res.render('profile');
     } catch (err) {
       res.status(400).json(err);
     }
