@@ -18,10 +18,10 @@
 {{! NOTE INPUT FORM }}
 
 <div id="note-form">
-  <form action="/api/notes" method="post">
+  <form>
     <label for="note_of_day">Add a Note</label>
     <input type="text" id="note" name="note_of_day" day="" />
-    <button id="select-button" type="submit">Submit</button>
+    <button id="select-button" type="submit" onclick="createNote()">Submit</button>
   </form>
 </div>
 

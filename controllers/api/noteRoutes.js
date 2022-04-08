@@ -33,32 +33,35 @@ router.get('/:id', async (req, res) => {
 
 
 // CREATE a note
-// router.post('/', async (req, res) => {
-//     try {
-//       user_id: req.session.user_id
-//       const noteData = await Note.create(req.body);
-//       res.render('profile');
-//     } catch (err) {
-//       res.status(400).json(err);
-//     }
-//   });
-
-  router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-      console.log(req.body)
-      const currentDay = await WordOfDay.findAll({where: {day: WordOfDay.day}})
-      const newNote = await Note.create({
-        ...req.body,
-        user_id: req.session.user_id,
-        day: currentDay,
-      });
-
-      res.status(200).json(newNote);
-      // res.render('profile');
+      const note = req.body.note_of_day;
+      const user = req.session.user_id;
+      const day = req.body.day;
+      const noteData = await Note.create({ note_of_day: `${note}`, user_id: `${user}`, day: `${day}` });
+      res.status(200).json(noteData);
+      res.render('profile')
     } catch (err) {
       res.status(400).json(err);
     }
   });
+
+  // router.post('/', withAuth, async (req, res) => {
+  //   try {
+  //     console.log(req.body)
+  //     const currentDay = await WordOfDay.findAll({where: {day: WordOfDay.day}})
+  //     const newNote = await Note.create({
+  //       ...req.body,
+  //       user_id: req.session.user_id,
+  //       day: currentDay,
+  //     });
+
+  //     res.status(200).json(newNote);
+  //     // res.render('profile');
+  //   } catch (err) {
+  //     res.status(400).json(err);
+  //   }
+  // });
 
 
   module.exports = router;
