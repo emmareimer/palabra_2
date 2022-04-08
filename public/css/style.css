@@ -20,10 +20,21 @@
   h2 {
     color: var(--teal);
   }
+
+  header {
+    padding: 12px;
+    text-align: center;
+    background-color: var(--lime);
+    color: var(--light);
+    display: flex;
+    justify-content:space-around;
+  }
   
   #palabra {
     font-family: 'Homemade Apple', cursive;
     color: var(--white);
+    margin-top: 10px;
+    margin-left: 10px;
   }
 
   #hello_user {
@@ -66,16 +77,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  
-  header {
-    margin: 0;
-    padding: 10px;
-    text-align: center;
-    background-color: var(--lime);
-    color: var(--light);
-    display: flex;
-    justify-content: space-between;
   }
   
   footer {
