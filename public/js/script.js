@@ -1,4 +1,4 @@
-// TODO: Assign variables from the DOM
+// Assign variables from the DOM
 var chosenWord = document.getElementById("chosen-word");
 var wordOfTheDayBtn = document.getElementById("word-of-day");
 var selectButton = document.getElementById("select-button");
@@ -10,11 +10,8 @@ var similarContainer = document.getElementById("similar-container");
 // Date at the top of the page
 document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
 
-// TODO: Assign other variables
+// Assign other variables
 var storedWords = [];
-
-// function displayPastWord(word) {
-// } //end of displayPastWord function
 
 function getWordofDay() {
   // clear previous data
@@ -25,14 +22,12 @@ function getWordofDay() {
   var curDay = Math.floor(
     (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
   );
-  // TODO: Fetch random word form random word API
+  // Fetch random word form database
   axios.get(`/api/word/${curDay}`).then(function (response) {
     // Sets the word of the day to the DOM
-    // console.log(response);
     var randomWord = response.data.word;
     chosenWord.textContent = '" ' + randomWord + ' "';
     chosenWord.setAttribute("data-word", randomWord);
-
     // Sets word of the day to local storage
     storedWords.push(randomWord);
     localStorage.setItem("words", JSON.stringify(storedWords));
@@ -59,7 +54,6 @@ function similar(rword) {
   )
     .then((response) => response.json())
     .then(function (data) {
-      // console.log(data);
       // if statement to evaluate data - else if it is a string already
       if (typeof data[0] != typeof "string") {
         var similarOne = data[0].meta.syns[0][0];
@@ -123,18 +117,8 @@ function defintion(rword) {
     .catch((error) => console.log("error", error));
 } //end of Dictionary Function
 
-// Get from local storage and display to the table in the html framework
-// function getWords() {
-//   var words = localStorage.getItem("words");
-//   words = JSON.parse(words);
-
-//   var wordDiv = document.createElement("div");
-//   wordDiv.textContent = words;
-//   wordContainer.appendChild(wordDiv);
-// }
-
-// Get archived word
-function archiveWords() {
+// Get past words
+function pastWords() {
   for (let i = 1; i < 6; i++) {
     let pastDate = document.getElementById("past-date-" + i);
     let pastWord = document.getElementById(`past-word-` + [i]);
@@ -167,7 +151,6 @@ function archiveWords() {
 }
 
 function createNote() {
-  console.log(`in createNote`);
   let note = document.querySelector("#note").value.trim();
   let today = new Date();
   let curDay = Math.floor(
@@ -178,13 +161,9 @@ function createNote() {
       note_of_day: `${note}`,
       day: `${curDay}`,
     })
-    .then(function (response) {
-      console.log(response);
-    })
     .catch((error) => console.log("error", error));
 }
 
 // call function on page load
 getWordofDay();
-archiveWords();
-// event listener for go button
+pastWords();
