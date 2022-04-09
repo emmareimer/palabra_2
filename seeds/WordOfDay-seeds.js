@@ -39,11 +39,11 @@ const WordOfDayData = [
   },
   {
     day: 099,
-    word: 'genuine',
+    word: 'patron',
   },
   {
     day: 100,
-    word: 'crazy',
+    word: 'genuine',
   },
   {
     day: 101,
