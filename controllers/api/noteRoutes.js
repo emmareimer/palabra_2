@@ -4,10 +4,14 @@ const { User, Note, WordOfDay } = require('../../models'); // need to update to 
 
 //current route /api/notes
 
-// GET all notes - for testing only, to be deleted before prod
+// GET notes for current user
 router.get('/', async (req, res) => {
     try {
-      const noteData = await Note.findAll();
+      const noteData = await Note.findAll({
+        where: {
+          user_id: req.session.user_id
+        }
+      });
       res.status(200).json(noteData);  
     } catch (err) {
       res.status(500).json(err);

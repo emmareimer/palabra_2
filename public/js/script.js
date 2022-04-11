@@ -118,13 +118,13 @@ function pastWords() {
 
     axios.get(`/api/word/${day}`).then(function (response) {
       archivedWord = response.data.word;
-      console.log(response);
       pastDate.textContent = date.format("LL");
       pastWord.innerHTML = archivedWord;
     });
 
     axios.get(`/api/notes`).then(function (response) {
       let find = response.data.find((data) => data.day === day);
+      // console.log(find);
       if (find) {
         pastNote.textContent = find.note_of_day;
       } else {

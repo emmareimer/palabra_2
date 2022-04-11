@@ -9,6 +9,7 @@ require('dotenv').config();
 router.get("/:word", async (req, res) => {
   const key = process.env.dict;
   const word = req.params.word;
+  console.log(req.session.user_id);
     try {
       const definition = await axios.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" +
       word +
