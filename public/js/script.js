@@ -95,8 +95,8 @@ function pastWords() {
       (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
     );
     for (let i = 0; i < resp.data.length; i++) {
-      if (curDay == resp.data[i].day) {
-        curNote.textContent = resp.data[i];
+      if (resp.data[i].day == curDay) {
+        curNote.textContent = resp.data[i].note_of_day;
       } else {
         curNote.textContent = '';
       }
