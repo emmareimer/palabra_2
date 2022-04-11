@@ -5,7 +5,7 @@ const NoteData = [
     id: 1,
     note_of_day: "This word is really cool.",
     user_id: 1,
-    day: 97,
+    day: 100,
   },
 ];
 
