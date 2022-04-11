@@ -7,6 +7,7 @@ var headingForResult = document.getElementById("definition");
 var displayContainer = document.getElementById("displayContainer");
 var similarContainer = document.getElementById("similar-container");
 
+
 // Date at the top of the page
 document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
 
@@ -40,34 +41,25 @@ function getWordofDay() {
 function similar(rword) {
   // clear previous data
   displayContainer.textContent = "";
-  var key = "ca17d58e-66c7-41a6-a5c6-589cfe4e0342";
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
-  fetch(
-    "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/" +
-      rword +
-      "?key=" +
-      key,
-    requestOptions
-  )
+ fetch(`/api/sim/${rword}`)
     .then((response) => response.json())
     .then(function (data) {
+      console.log(data);
       // if statement to evaluate data - else if it is a string already
-      if (typeof data[0] != typeof "string") {
-        var similarOne = data[0].meta.syns[0][0];
-        var similarTwo = data[0].meta.syns[0][1];
-        var similarThree = data[0].meta.syns[0][2];
+      if (data[0] == "similarOne") {
+        console.log(data[0]);
+        var similarOne = data.similarOne;
+        var similarTwo = data.similarTwo;
+        var similarThree = data.similarThree;
         let newHeading = document.createElement("div");
         newHeading.setAttribute("id", "definition");
         newHeading.textContent = "";
         displayContainer.appendChild(newHeading);
         similarContainer.textContent = `${similarOne}, ${similarTwo}, ${similarThree}`;
       } else {
-        var oneWorder = data[0];
-        var wordTwo = data[1];
-        var wordThree = data[2];
+        var oneWorder = data.oneWorder;
+        var wordTwo = data.wordTwo;
+        var wordThree = data.wordThree;
         let newHeading = document.createElement("div");
         newHeading.setAttribute("id", "definition");
         newHeading.textContent = "";
@@ -80,25 +72,17 @@ function similar(rword) {
 
 // THIS FUNCTION PINGS THE DICTIONARY
 function defintion(rword) {
-  var word = rword;
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
-  fetch(
-    "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" +
-      word +
-      "?key=579eae0a-3a35-44ce-b657-5006082e2ec0",
-    requestOptions
-  )
+ 
+ fetch(`./api/def/${rword}`)
+//   .then(response => console.log(response))
     .then((response) => response.json())
     .then(function (data) {
       // if statement to evaluate data if string then else
       if (typeof data[0] != typeof "string") {
-        var gotMeta = data[0].shortdef[0];
+        var gotMeta = data.gotMeta;
         headingForResult.textContent = "";
         displayContainer.textContent = gotMeta;
-        let article = data[0].fl;
+        let article = data.article;
         let artHead = document.createElement("div");
         artHead.setAttribute("id", "article");
         artHead.textContent = `| ${article} | `;
@@ -134,13 +118,13 @@ function pastWords() {
 
     axios.get(`/api/word/${day}`).then(function (response) {
       archivedWord = response.data.word;
-      console.log(response);
       pastDate.textContent = date.format("LL");
       pastWord.innerHTML = archivedWord;
     });
 
     axios.get(`/api/notes`).then(function (response) {
       let find = response.data.find((data) => data.day === day);
+      // console.log(find);
       if (find) {
         pastNote.textContent = find.note_of_day;
       } else {
