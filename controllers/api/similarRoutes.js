@@ -27,9 +27,9 @@ router.get("/:word", async (req, res) => {
             similarThree: similar.data[0].meta.syns[0][2]
         });
           } else {
-         res.status(200).json({oneWorder: similar.data[0],
-            wordTwo: similar.data[1],
-            wordThree: similar.data[2]
+         res.status(200).json({similarOne: similar.data[0],
+            similarTwo: similar.data[1],
+            similarThree: similar.data[2]
          })
           }
   } catch (err) {

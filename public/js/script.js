@@ -6,6 +6,7 @@ var wordContainer = document.querySelector(".word-container");
 var headingForResult = document.getElementById("definition");
 var displayContainer = document.getElementById("displayContainer");
 var similarContainer = document.getElementById("similar-container");
+var curNote = document.getElementById("current-note");
 
 
 // Date at the top of the page
@@ -44,10 +45,6 @@ function similar(rword) {
  fetch(`/api/sim/${rword}`)
     .then((response) => response.json())
     .then(function (data) {
-      console.log(data);
-      // if statement to evaluate data - else if it is a string already
-      if (data[0] == "similarOne") {
-        console.log(data[0]);
         var similarOne = data.similarOne;
         var similarTwo = data.similarTwo;
         var similarThree = data.similarThree;
@@ -56,16 +53,6 @@ function similar(rword) {
         newHeading.textContent = "";
         displayContainer.appendChild(newHeading);
         similarContainer.textContent = `${similarOne}, ${similarTwo}, ${similarThree}`;
-      } else {
-        var oneWorder = data.oneWorder;
-        var wordTwo = data.wordTwo;
-        var wordThree = data.wordThree;
-        let newHeading = document.createElement("div");
-        newHeading.setAttribute("id", "definition");
-        newHeading.textContent = "";
-        displayContainer.appendChild(newHeading);
-        similarContainer.textContent = `${oneWorder},  ${wordTwo}, ${wordThree}`;
-      }
     })
     .catch((error) => console.log("error", error));
 } //End of Thesarus Function
@@ -74,7 +61,6 @@ function similar(rword) {
 function defintion(rword) {
  
  fetch(`./api/def/${rword}`)
-//   .then(response => console.log(response))
     .then((response) => response.json())
     .then(function (data) {
       // if statement to evaluate data if string then else
@@ -103,6 +89,20 @@ function defintion(rword) {
 
 // Get past words
 function pastWords() {
+  axios.get(`/api/notes`).then(function (resp) {
+    let today = new Date();
+    let curDay = Math.floor(
+      (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
+    );
+    for (let i = 0; i < resp.data.length; i++) {
+      if (curDay == resp.data[i].day) {
+        curNote.textContent = resp.data[i];
+      } else {
+        curNote.textContent = '';
+      }
+    }
+  })
+
   for (let i = 1; i < 6; i++) {
     let pastDate = document.getElementById("past-date-" + i);
     let pastWord = document.getElementById(`past-word-` + [i]);
@@ -124,7 +124,6 @@ function pastWords() {
 
     axios.get(`/api/notes`).then(function (response) {
       let find = response.data.find((data) => data.day === day);
-      // console.log(find);
       if (find) {
         pastNote.textContent = find.note_of_day;
       } else {
