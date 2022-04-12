@@ -4,19 +4,22 @@ const { User, Note, WordOfDay } = require('../../models'); // need to update to 
 
 //current route /api/notes
 
-// GET all notes - for testing only, to be deleted before prod
+// GET notes for current user
 router.get('/', async (req, res) => {
     try {
-      const noteData = await Note.findAll();
+      const noteData = await Note.findAll({
+        where: {
+          user_id: req.session.user_id
+        }
+      });
       res.status(200).json(noteData);  
     } catch (err) {
       res.status(500).json(err);
     }
   });
 
- 
+ // get notes for word
 router.get('/:id', async (req, res) => {
-  // const curDay = somehow we get the julian day
   try {
     const curDay = req.params.id;
     const noteData = await Note.findByPk(curDay, {
@@ -45,23 +48,5 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
-
-  // router.post('/', withAuth, async (req, res) => {
-  //   try {
-  //     console.log(req.body)
-  //     const currentDay = await WordOfDay.findAll({where: {day: WordOfDay.day}})
-  //     const newNote = await Note.create({
-  //       ...req.body,
-  //       user_id: req.session.user_id,
-  //       day: currentDay,
-  //     });
-
-  //     res.status(200).json(newNote);
-  //     // res.render('profile');
-  //   } catch (err) {
-  //     res.status(400).json(err);
-  //   }
-  // });
-
 
   module.exports = router;

@@ -52,7 +52,6 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      console.log('username bad')
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -62,7 +61,6 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      console.log('pw bad')
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -75,8 +73,6 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       
       res.redirect('/profile')
-      // res.render('profile', {user: userData})
-      // res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
@@ -84,38 +80,5 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-// Create endpoint /api/email that handles email logic
-
-// On front end when user initiates email send button, hit email endpoint 
-
-
-
-
-
-
-
-
-
-
-// DELETE a user - Will we need this? *******************************8
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const userData = await User.destroy({
-//       where: {
-//         id: req.params.id
-//       }
-//     });
-
-//     if (!userData) {
-//       res.status(404).json({ message: 'No User found with this id!' });
-//       return;
-//     }
-
-//     res.status(200).json(userData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

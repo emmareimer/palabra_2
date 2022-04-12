@@ -5,10 +5,10 @@ const sequelize = require('../config/connection');
 const User = require('./User');
 const Note = require('./Note')
 
-// Initialize Product model (table) by extending off Sequelize's Model class
+// Initialize WordOfDay model (table) by extending off Sequelize's Model class
 class WordOfDay extends Model {}
 
-// set up fields and rules for Product model
+// set up fields and rules for WordOfDay model
 WordOfDay.init(
   {
       day: {
