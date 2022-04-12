@@ -12,6 +12,11 @@ router.get('/register', (req, res) => {
   res.render('register');
 });
 
+// Testimonial page
+router.get('/testimonials', (req, res) => {
+  res.render('testimonials');
+});
+
 // Profile Page
 router.get('/profile', withAuth, async (req, res) => {
     try {
