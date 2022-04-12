@@ -21,13 +21,35 @@
     color: var(--teal);
   }
 
-  header {
+  header, nav {
     padding: 12px;
+    padding-top: 20px;
+    margin-bottom: 10px;
     text-align: center;
     background-color: var(--lime);
     color: var(--light);
     display: flex;
     justify-content:space-around;
+  }
+
+  ul {
+    text-decoration: none;
+  }
+
+  li {
+    color: #231f20;
+  }
+
+  #past-date-1, #past-date-2, #past-date-3, #past-date-4, #past-date-5 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  #past-word-1, #past-note-1, #past-word-2, #past-note-2, #past-word-3, #past-note-3, #past-word-4, #past-note-4, #past-word-5, #past-note-5 {
+    font-size: 16px;
+  }
+
+  #testy {
+    text-decoration: none;
   }
   
   #palabra {
@@ -36,6 +58,16 @@
     margin-top: 10px;
     margin-left: 10px;
   }
+
+  #current-note {
+    text-align: center;
+  }
+
+  #note-container {
+    text-align: center;
+    margin-top: 15px;
+  }
+
 
   #hello_user {
     color: var(--dark);
@@ -55,9 +87,7 @@
     text-decoration: none;
   }
 
-  nav {
-    margin: 10px;
-  }
+
   
   #input-dropwdown {
     display: flex;
@@ -102,19 +132,19 @@
     margin-right: auto;
   }
   
-  #lang-select {
-    font-size: 20px;
-    background-color: var(--beige);
-    padding: 8px;
-  }
   
   #select-button {
-    font-size: 30px;
     color: var(--light);
     background-color: var(--teal);
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .select-button {
+    color: var(--light);
+    background-color: var(--teal);
+    padding-right: 10px;
+    padding-left: 10px;
   }
   
   #select-button:hover {
@@ -125,7 +155,7 @@
     color: var(--dark);
     margin: 30px;
     font-family: 'Playfair Display', serif;
-    font-size: 80px;
+    font-size: 60px;
   }
   
   .my-4 {
@@ -159,6 +189,7 @@
     margin: 20px;
     width: 15%;
   }
+
   .spacer {
     flex-grow: 1;
   }
