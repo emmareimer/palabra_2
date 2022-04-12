@@ -78,6 +78,10 @@
     font-size: 25px;
   }
 
+  .login {
+    text-align: center;
+  }
+
   #note-form {
     padding-top: 50px;
     margin-left: auto;
@@ -136,14 +140,7 @@
   
   #select-button {
     color: var(--light);
-    background-color: var(--teal);
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  .select-button {
-    color: var(--light);
-    background-color: var(--teal);
+    background-color: #b9936c;
     padding-right: 10px;
     padding-left: 10px;
   }
@@ -219,3 +216,10 @@
   iframe {
     margin: 15px 0px 45px;
   }
+
+  /* .submit-button {
+    color: var(--light);
+    background-color: var(--teal);
+    padding-right: 10px;
+    padding-left: 10px;
+  } */
