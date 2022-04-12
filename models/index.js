@@ -17,7 +17,6 @@ User.hasMany(Note, {
   foreignKey: 'user_id',
 });
 
-// // Note -> belongsTo -> User, 
 Note.belongsTo(User, {
   foreignKey: 'user_id',
 });

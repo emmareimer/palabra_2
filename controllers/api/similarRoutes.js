@@ -7,7 +7,6 @@ const axios = require('axios');
 router.get("/:word", async (req, res) => {
     const key = process.env.thea;
     const word = req.params.word;
-    console.log(word);
       try {
         const similar = await axios.get("https://www.dictionaryapi.com/api/v3/references/thesaurus/json/" +
         word +
@@ -36,6 +35,5 @@ router.get("/:word", async (req, res) => {
         res.status(500).json(err);
       }
     });
-
 
 module.exports = router;

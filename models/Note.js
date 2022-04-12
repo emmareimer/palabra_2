@@ -6,10 +6,10 @@ const WordOfDay = require('./WordOfDay')
 const User = require('./User');
 
 
-// Initialize Product model (table) by extending off Sequelize's Model class
+// Initialize Note model (table) by extending off Sequelize's Model class
 class Note extends Model {}
 
-// set up fields and rules for Product model
+// set up fields and rules for Note model
 Note.init(
   {
       id: {
