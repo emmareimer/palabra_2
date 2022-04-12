@@ -124,7 +124,7 @@ function pastWords() {
       if (find) {
         pastNote.textContent = find.note_of_day;
       } else {
-        pastNote.textContent = "No note here!";
+        pastNote.textContent = "";
       }
     });
   }
