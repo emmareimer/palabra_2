@@ -2,18 +2,17 @@ const withAuth = require('../../utils/auth')
 const router = require('express').Router();
 const User = require('../../models/User')
 
+// Login Page
 router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// router.post('/login', (req, res) => {
-
-// });
-
+// Register Page
 router.get('/register', (req, res) => {
   res.render('register');
 });
 
+// Profile Page
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const user =  await User.findOne({where: {id: req.session.user_id}})
@@ -26,17 +25,13 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
+// Home Page 
 router.get('/', (req, res) => {
     const isLoggedIn = req.session.logged_in || false;
     res.render('home', {isLoggedIn});
 });
 
-// TODO EMMA: Build past route handlebar /profile/word/{:ID}
-
-
-// TODO!!!!! WHY YOU NO WORK !!!!!!
-// Logout route
-// DELETE /api/auth/logout
+// Logout - Back to Home
 router.get('/logout', (req, res) => {
     if (req.session) {
       req.session.destroy(err => {
@@ -50,6 +45,5 @@ router.get('/logout', (req, res) => {
       res.redirect('/')
     }
   })
-
 
 module.exports = router;

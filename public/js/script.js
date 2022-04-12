@@ -8,7 +8,6 @@ var displayContainer = document.getElementById("displayContainer");
 var similarContainer = document.getElementById("similar-container");
 var curNote = document.getElementById("current-note");
 
-
 // Date at the top of the page
 document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
 
@@ -102,26 +101,24 @@ function pastWords() {
       }
     }
   })
-
+// for loop to display past words and notes
   for (let i = 1; i < 6; i++) {
     let pastDate = document.getElementById("past-date-" + i);
     let pastWord = document.getElementById(`past-word-` + [i]);
     let pastNote = document.getElementById(`past-note-` + [i]);
     let date = moment().subtract({ days: i });
-
     let today = new Date();
     var curDay = Math.floor(
       (today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24)
     );
-
     let day = curDay - i;
-
+    //get word for that day
     axios.get(`/api/word/${day}`).then(function (response) {
       archivedWord = response.data.word;
       pastDate.textContent = date.format("LL");
       pastWord.innerHTML = archivedWord;
     });
-
+    // get notes, show where days are matching
     axios.get(`/api/notes`).then(function (response) {
       let find = response.data.find((data) => data.day === day);
       if (find) {
