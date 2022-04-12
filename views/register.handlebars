@@ -1,10 +1,12 @@
-  <h2 id="hello_user"> Register </h2>
+  <div class="login">
+  <h2 id="hello_user"> Register </h2> <br>
 
-<form action="/api/users" method="post">
+<form id="user-signup" onsubmit="return registerUser()">
   <label for="email">Email:</label>
-  <input name="email" type="text" />
+  <input name="email" type="text" id="signup_email"/><br><br>
   <label for="password">Password:</label>
-  <input name="password" type="password" />
+  <input name="password" type="password" id="signup_password"/><br><br>
   <button type="submit" class="submit-button">Submit</button>
 </form>
+</div>
     <script src="/js/script.js"></script>

@@ -11,35 +11,35 @@ const WordOfDayData = [
   },
   {
     day: 092,
-    word: 'excited',
+    word: 'grift',
   },
   {
     day: 093,
-    word: 'moody',
+    word: 'mettlesome',
   },
   {
     day: 094,
-    word: 'salty',
+    word: 'construe',
   },
   {
     day: 095,
-    word: 'grumpy',
+    word: 'prosaic',
   },
   {
     day: 096,
-    word: 'dope',
+    word: 'slough',
   },
   {
     day: 097,
-    word: 'sleepy',
+    word: 'kitsch',
   },
   {
     day: 098,
-    word: 'mad',
+    word: 'rejuvenate',
   },
   {
     day: 099,
-    word: 'patron',
+    word: 'captious',
   },
   {
     day: 100,
@@ -47,19 +47,95 @@ const WordOfDayData = [
   },
   {
     day: 101,
-    word: 'terrible',
+    word: 'palindrome',
   },
   {
     day: 102,
-    word: 'console',
+    word: 'rankle',
   },
   {
     day: 103,
-    word: 'bug',
+    word: 'layman',
   },
   {
     day: 104,
-    word: 'coffee',
+    word: 'affable',
+  },
+  {
+    day: 105,
+    word: 'sanguine',
+  },
+  {
+    day: 106,
+    word: 'winsome',
+  },
+  {
+    day: 107,
+    word: 'meritorious',
+  },
+  {
+    day: 108,
+    word: 'finesse',
+  },
+  {
+    day: 109,
+    word: 'stola',
+  },
+  {
+    day: 110,
+    word: 'juggernaut',
+  },
+  {
+    day: 111,
+    word: 'factoid',
+  },
+  {
+    day: 112,
+    word: 'homogeneous',
+  },
+  {
+    day: 113,
+    word: 'intemperate',
+  },
+  {
+    day: 114,
+    word: 'opine',
+  },
+  {
+    day: 115,
+    word: 'sully',
+  },
+  {
+    day: 116,
+    word: 'voluble',
+  },
+  {
+    day: 117,
+    word: 'antithetical',
+  },
+  {
+    day: 118,
+    word: 'galvanize',
+  },
+  {
+    day: 119,
+    word: 'interloper',
+  },
+  {
+    day: 120,
+    word: 'smarmy',
+  },
+  {
+    day: 121,
+    word: 'milquetoast',
+  },
+  {
+    day: 122,
+    word: 'palisade',
+  },
+  {
+    day: 123,
+    word: 'ostracize',
   },
 ];
 

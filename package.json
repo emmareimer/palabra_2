@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/emmareimer/palabra_2#readme",
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",

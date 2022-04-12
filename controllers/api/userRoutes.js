@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
+// POST: /api/users
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);

@@ -7,6 +7,7 @@ var headingForResult = document.getElementById("definition");
 var displayContainer = document.getElementById("displayContainer");
 var similarContainer = document.getElementById("similar-container");
 var curNote = document.getElementById("current-note");
+var userSignup = document.getElementById("user-signup");
 
 // Date at the top of the page
 document.getElementById("date").textContent = moment().format("MMMM Do YYYY");
@@ -124,7 +125,7 @@ function pastWords() {
       if (find) {
         pastNote.textContent = find.note_of_day;
       } else {
-        pastNote.textContent = "No note here!";
+        pastNote.textContent = "";
       }
     });
   }
@@ -142,6 +143,21 @@ function createNote() {
       day: `${curDay}`,
     })
     .catch((error) => console.log("error", error));
+}
+
+function registerUser () {
+  const email = document.getElementById("signup_email").value || "";
+  const password = document.getElementById("signup_password").value || "";
+  axios
+    .post(`/api/users/`, {email, password})
+    .then((res) => {
+      console.log(res)
+      window.location = '/profile'
+    })
+    .catch((error) => {
+      alert("Must be valid email.")
+    });
+  return false
 }
 
 // call function on page load
