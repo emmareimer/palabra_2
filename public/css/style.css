@@ -54,6 +54,7 @@
   
   #palabra {
     font-family: 'Homemade Apple', cursive;
+    font-size: 30px;
     color: var(--white);
     margin-top: 10px;
     margin-left: 10px;
@@ -74,7 +75,7 @@
     padding-left: 25px;
     padding-top: 25px;
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   #note-form {
