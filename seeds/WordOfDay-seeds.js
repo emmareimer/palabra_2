@@ -55,7 +55,7 @@ const WordOfDayData = [
   },
   {
     day: 103,
-    word: 'layman',
+    word: 'nerd',
   },
   {
     day: 104,
